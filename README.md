@@ -14,3 +14,13 @@ To deploy on GitHub Pages:
 
 ---
 Feel free to fork and adapt for your own About Me page!
+
+
+## Rails Bug Triage - $19
+
+Need a second opinion on a Ruby on Rails issue? I offer a small, scoped, **$19 written bug diagnosis**: probable root cause, recommended steps or patch guidance, and a verification checklist.
+
+- [Read the service details and submit a no-obligation request](https://dang-hoang-hieu.github.io/rails-debug/)
+- [GitHub issue request form](https://github.com/dang-hoang-hieu/dang-hoang-hieu.github.io/issues/new?template=rails-bug-triage.md)
+
+Please describe only a sanitized issue initially. Do not post API keys, private source code, or customer data in public issues. Payment happens only after the scope is agreed.
