@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Get an actionable Ruby on Rails bug diagnosis for $19. A focused, written root-cause analysis and next-step plan from a senior backend developer based in Tokyo.">
+  <title>Rails Bug Triage — $19 | Jason Dang</title>
+  <style>
+    :root { color-scheme:dark; --bg:#0b1020; --surface:#131b30; --soft:#1b2843; --text:#f5f7fb; --muted:#b5c2d8; --accent:#84f3c2; --line:#293955; }
+    * { box-sizing:border-box }
+    html { scroll-behavior:smooth }
+    body { margin:0; background:radial-gradient(ellipse at 70% 0%,#19365a 0%,transparent 41%),var(--bg); color:var(--text); font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.62 }
+    a { color:inherit }
+    .wrap { max-width:1050px; margin:0 auto; padding:0 24px }
+    header { padding:23px 0; border-bottom:1px solid var(--line) }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:24px }
+    .brand { text-decoration:none; font-weight:750; letter-spacing:-.02em }
+    .tag { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase }
+    main { padding:76px 0 30px }
+    .hero { display:grid; grid-template-columns:1.35fr .8fr; gap:58px; align-items:start }
+    h1 { font-size:clamp(2.45rem,5.25vw,4.15rem); letter-spacing:-.055em; line-height:1.09; margin:17px 0 23px; max-width:750px }
+    h1 em { color:var(--accent); font-style:normal }
+    .lead { color:var(--muted); font-size:clamp(1.03rem,1.8vw,1.2rem); max-width:650px; margin-bottom:30px }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:26px 0 15px }
+    .btn { display:inline-block; padding:13px 20px; text-align:center; border-radius:10px; text-decoration:none; font-weight:750; transition:transform .15s,background .15s }
+    .btn:hover { transform:translateY(-2px) }
+    .primary { color:#062518; background:var(--accent) }
+    .secondary { border:1px solid #6e7e9d; background:#1a2841 }
+    .note { font-size:.84rem; color:var(--muted) }
+    .price-card { padding:29px; border:1px solid #426c71; border-radius:16px; background:linear-gradient(145deg,#1a3546,var(--surface)); box-shadow:0 20px 70px #04091455 }
+    .price { font-size:3.5rem; font-weight:800; line-height:1.12; letter-spacing:-.055em; margin:6px 0 }
+    .price small { font-size:1rem; font-weight:500; color:var(--muted); letter-spacing:0 }
+    .divider { border:0; border-top:1px solid var(--line); margin:21px 0 }
+    .price-card ul, .features ul { margin:0; padding-left:20px }
+    .price-card li { margin:12px 0 }
+    section { padding:56px 0 }
+    h2 { letter-spacing:-.035em; font-size:clamp(1.6rem,3vw,2.15rem); margin:0 0 18px }
+    .cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:24px }
+    .card { padding:23px; border-radius:14px; border:1px solid var(--line); background:var(--surface) }
+    .card h3 { font-size:1.08rem; margin:0 0 8px }
+    .card p { color:var(--muted); margin:0; font-size:.95rem }
+    .number { display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center; border:1px solid #396c6b; color:var(--accent); border-radius:9px; font-weight:750; margin-bottom:15px }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:50px }
+    .muted { color:var(--muted) }
+    .faq details { padding:18px 0; border-bottom:1px solid var(--line) }
+    .faq summary { cursor:pointer; font-weight:690 }
+    .faq p { color:var(--muted); margin:10px 0 0 }
+    .closing { margin:50px 0 70px; padding:35px; border:1px solid #426c71; background:var(--surface); border-radius:16px }
+    footer { border-top:1px solid var(--line); padding:27px 0 40px; color:var(--muted); font-size:.9rem }
+    @media (max-width:800px) { main{padding-top:48px} .hero,.two{grid-template-columns:1fr;gap:27px} .cards{grid-template-columns:1fr} section{padding:35px 0} }
+    @media (max-width:440px) { .wrap{padding:0 18px} .nav{align-items:flex-start;flex-direction:column;gap:4px} .btn{width:100%} .price-card{padding:23px} .closing{padding:23px} }
+    @media (prefers-reduced-motion:reduce) { *{scroll-behavior:auto!important;transition:none!important} }
+  </style>
+</head>
+<body>
+  <header><div class="wrap nav"><a class="brand" href="/">Jason Dang · Backend Engineer</a><span class="tag">Tokyo · Remote worldwide</span></div></header>
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <span class="tag">Small problem. Fixed direction.</span>
+        <h1>Stuck on a Rails bug?<br>Get clarity for <em>$19.</em></h1>
+        <p class="lead">A focused, asynchronous review of one Ruby on Rails problem. You'll get a written diagnosis and concrete next steps—without booking a big consulting engagement.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/dang-hoang-hieu/dang-hoang-hieu.github.io/issues/new?template=rails-bug-triage.md">Request a $19 triage ↗</a>
+          <a class="btn secondary" href="#how">How it works</a>
+        </div>
+        <p class="note">No upfront charge to request. Scope and payment are confirmed before work begins.</p>
+      </div>
+      <aside class="price-card" aria-label="Service price and deliverables">
+        <span class="tag">One-time fixed fee</span>
+        <div class="price">$19 <small>USD</small></div>
+        <p class="muted" style="margin:0">One focused issue · written delivery</p>
+        <hr class="divider">
+        <ul>
+          <li>Likely root cause, clearly explained</li>
+          <li>Specific fix or next debugging steps</li>
+          <li>Verification checklist / suggested test</li>
+          <li>Delivery target: 2 business days after scope agreement</li>
+        </ul>
+        <p class="note">Initial review is limited to one isolated bug or question, approximately 45 minutes of analysis. Larger fixes quoted separately.</p>
+      </aside>
+    </div>
+    <section id="how">
+      <span class="tag">Simple process</span>
+      <h2>From confusing error to actionable answer.</h2>
+      <div class="cards">
+        <div class="card"><span class="number">1</span><h3>Describe the bug</h3><p>Send the error, expected vs. actual behavior, environment, and a minimal reproduction if available.</p></div>
+        <div class="card"><span class="number">2</span><h3>Confirm scope</h3><p>I review the request and confirm whether it fits the $19 triage. We arrange payment and private code access if needed.</p></div>
+        <div class="card"><span class="number">3</span><h3>Get a diagnosis</h3><p>Receive a concise technical explanation, recommended change, and instructions to verify it.</p></div>
+      </div>
+    </section>
+    <section class="two">
+      <div class="features">
+        <span class="tag">Good fits</span>
+        <h2>Rails problems worth a quick second opinion</h2>
+        <ul class="muted">
+          <li>ActiveRecord / SQL query surprises or N+1 behavior</li>
+          <li>Rails API validation or serialization errors</li>
+          <li>Sidekiq job failures and retry surprises</li>
+          <li>A failing RSpec test or confusing stack trace</li>
+          <li>Controller/service code that's behaving unexpectedly</li>
+        </ul>
+      </div>
+      <div>
+        <span class="tag">About the engineer</span>
+        <h2>Experience, without agency overhead.</h2>
+        <p class="muted">I'm Jason (Hieu) Dang, a Tokyo-based backend engineer with extensive Ruby on Rails and API development experience. The goal of this small service is a clear, practical diagnosis—not a sales call.</p>
+        <p class="muted">If a reliable fix requires deeper repository access, extensive development, infrastructure access, or complex reproduction, I'll explain the extra scope before any work or payment.</p>
+      </div>
+    </section>
+    <section class="faq">
+      <span class="tag">Good to know</span><h2>Questions</h2>
+      <details><summary>Will you actually edit my code for $19?</summary><p>The standard deliverable is a diagnosis, suggested patch, and verification steps. A small patch may be included when practical, but implementing and deploying a production fix are not guaranteed at this price.</p></details>
+      <details><summary>What if you can't identify the root cause?</summary><p>I'll tell you what I tested or ruled out and the most useful next step. If the submitted task doesn't fit the small fixed-scope service, I'll say so before charging you.</p></details>
+      <details><summary>Can I share private source code?</summary><p>Yes, after we agree on a private method of sharing. Please do not publish proprietary code, passwords, API keys, customer data, or sensitive logs in a public GitHub issue.</p></details>
+      <details><summary>How is payment handled?</summary><p>I'll send an agreed payment request after confirming the scope. This page does not collect card details.</p></details>
+    </section>
+    <div class="closing">
+      <span class="tag">Ready for a second set of eyes?</span>
+      <h2>Tell me what's broken.</h2>
+      <p class="muted">Start with a high-level description. It costs nothing to check whether your bug fits the $19 offer.</p>
+      <a class="btn primary" href="https://github.com/dang-hoang-hieu/dang-hoang-hieu.github.io/issues/new?template=rails-bug-triage.md">Request triage on GitHub ↗</a>
+      <p class="note">Your initial GitHub issue is public; omit sensitive details.</p>
+    </div>
+  </main>
+  <footer><div class="wrap">© Jason Dang · Tokyo, Japan · <a href="https://github.com/dang-hoang-hieu">GitHub</a></div></footer>
+</body>
+</html>
